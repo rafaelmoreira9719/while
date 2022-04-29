@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex5</title>
+</head>
+<body>
+   
+<button onclick="calculo()">Números Cabalísticos</button> <br>
+<span id="texto"></span>
+
+</body>
+</html>
+<script>
+
+function calculo() {
+   
+  var qtd = 0;
+  while (qtd < 15){
+    qtd++;
+
+    if (qtd == 3 || qtd == 4 || qtd == 7 || qtd == 10 || qtd == 12) {
+        texto.innerHTML += ``; 
+    } else{
+        texto.innerHTML += `${qtd} <br>`
+    }
+    }
+
+}
+
+</script>

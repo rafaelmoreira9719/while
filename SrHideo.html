@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morangos do Hideo</title>
+</head>
+
+<body>
+
+    <div id="div_abertura" style="display: block;">
+
+        <h2>Para abrir a loja informe:</h2>
+
+        <h3>Quantas caixas de Morangos foram colhidas e serão vendidas?</h3>
+
+        <input id="ipt_qtdmorango"> <br><br>
+
+        <button onclick="abrir()">Abrir as vendas</button> <br>
+
+        <div id="div_msg_abertura"></div>
+
+    </div>
+
+
+
+    <div id="div_venda" style="display: none;">
+
+        <h3>Registro das Operações de venda do dia</h3>
+
+        Informe quantas caixas foram vendidas:
+
+        <input id="ipt_venda"> <br><br>
+
+        Informe o valor de venda de cada caixa:
+
+        <input id="ipt_preco"> <span id="span_msg"></span> <br><br>
+
+        <button onclick="registrar()">Registrar a Venda</button>
+
+        <button onclick="encerrar()" style="background-color: rgb(161, 0, 0); color: aliceblue;">Encerrar o
+            Turno</button>
+        <br><br>
+
+        <span id="msg2"></span> <br><br>
+        <span id="msg3"></span>
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    var caixas = 0;
+
+    function abrir() {
+        caixas = Number(ipt_qtdmorango.value);
+        if (caixas < 100) {
+            alert(`ERRO - Com esse volume de Morangos não dá para abrir as vendas`)
+        } else {
+            if (caixas > 2000) {
+                alert(`AVISO – Tudo isso!!! Verificar se a quantidade está correta`)
+                div_abertura.style.display = 'none'
+                div_venda.style.display = 'block'
+            }
+            if (caixas >= 100 & caixas <= 2000) {
+                div_abertura.style.display = 'none'
+                div_venda.style.display = 'block'
+            }
+        }
+    }
+
+    //segunda tela//
+
+    function registrar() {
+        var venda = 0;
+        var venda = Number(ipt_venda.value);
+        var preco = Number(ipt_preco.value);
+        var vendidas = caixas - venda
+
+
+        if (venda < 20) {
+            if (preco >= 5 & preco <= 6) {
+                span_msg.innerHTML = `Valor OK`
+                msg2.innerHTML = `Com a venda de ${venda} de caixas de Morango o saldo no restante é de ${vendidas}`
+            }
+            else {
+                span_msg.innerHTML = `Valor errado para essa quantidade vendida`
+            }
+        }
+
+        if (venda >= 20 & venda <= 40) {
+            if (preco >= 4.50 & preco <= 5.50) {
+                span_msg.innerHTML = `Valor OK`
+                msg2.innerHTML = `Com a venda de ${venda} de caixas de Morango o saldo no restante é de ${vendidas}`
+            }
+            else {
+                span_msg.innerHTML = `Valor errado para essa quantidade vendida`
+            }
+        }
+
+        if (venda > 40) {
+            if (preco >= 4.00 & preco <= 5.00) {
+                span_msg.innerHTML = `Valor OK`
+                msg2.innerHTML = `Com a venda de ${venda} de caixas de Morango o saldo no restante é de ${vendidas}`
+            }
+            else {
+                span_msg.innerHTML = `Valor errado para essa quantidade vendida`
+            }
+        }
+
+    }
+
+    //Encerrar//
+    function encerrar() {
+        var venda = 0;
+        var venda = Number(ipt_venda.value);
+        var preco = Number(ipt_preco.value);
+        var vendidas = caixas - venda
+        var valor = venda * preco
+        var media = valor / venda
+        
+        span_msg.innerHTML = ``
+        msg3.innerHTML = `
+        Venda de Morangos <br><br>
+
+        Saldo de produto = ${vendidas} <br><br>
+
+        Volume total vendido = ${venda} <br><br>
+
+        Valor total das vendas = R$ ${valor} <br><br>
+
+        Valor médio das vendas = R$ ${media}` 
+
+    }
+
+</script>
